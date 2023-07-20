@@ -14,7 +14,7 @@ public class App {
     }
 
     public static void getData() throws IOException {
-        String path = "C:\\cmder\\Code401\\quotes\\app\\src\\main\\resources\\recentquotes.json";
+        String path = "app/src/main/resources/recentquotes.json";
         System.out.println(quoteRandom(path, false));
     }
 
