@@ -1,6 +1,6 @@
 package quotes;
 
-public class RetrieveQuotes extends App {
+public class RetrieveQuotes {
 
     // ***PROPERTIES*** //
     String author;
