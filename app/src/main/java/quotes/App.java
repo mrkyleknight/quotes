@@ -5,6 +5,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Random;
 
+//Fixed booleon type and test (True to false), added sout to verify index. Fixed Random function (did not declare properly).
+
 
 public class App {
     public static void main(String[] args) throws IOException {

@@ -15,7 +15,7 @@ public class RetrieveQuotes {
     }
 
 
-    // ***CONSTRUCTOR*** //
+    // ****CONSTRUCTOR**** //
     public RetrieveQuotes(String author, String text) {
         this.author = author;
         this.text = text;
