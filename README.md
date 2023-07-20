@@ -1,5 +1,9 @@
 # quotes
 
+# Instructions for Running App.
+- Either run `./gradlew run` from terminal or navigate to main app and hit run in Intellij
+- To test `./gradlew test` or navigate to test files and hit run.
+
 Name of feature: 
 
 Use the file recentquotes.json to show random popular book quotes. Your program should use GSON to parse the .json file. The app needs no functionality other than showing the quote and the author when it is run. The app should choose one quote each time it is run.

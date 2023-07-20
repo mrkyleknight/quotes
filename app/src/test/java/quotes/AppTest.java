@@ -3,12 +3,51 @@
  */
 package quotes;
 
+import com.google.gson.Gson;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 class AppTest {
-    @Test void appHasAGreeting() {
-        App classUnderTest = new App();
-        assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
+
+    @Test
+    @DisplayName("Test Get a Random Quote")
+    public void testGetRandomQuote() {
+        // This test makes sure that our main app returns an actual quote upon running.
+        String generatedQuote = null;
+        try {
+            generatedQuote = App.quoteRandom("../app/src/main/resources/recentquotes.json");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        assertNotNull(generatedQuote, "Generated quote should not be null");
+
     }
+
+    @Test
+    @DisplayName("Test API Response Status Code")
+    public void testApiResponseStatusCode() {
+        int expectedStatusCode = 200;
+        int actualStatusCode = getApiResponseStatusCode();
+        assertEquals(expectedStatusCode, actualStatusCode, "API response status code should be 200");
+    }
+
+    private int getApiResponseStatusCode() {
+        int statusCode = -1; // Default value if an exception occurs or response code is not obtained
+        try {
+            URL quoteURL = new URL("http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en");
+            HttpURLConnection quoteConnection = (HttpURLConnection) quoteURL.openConnection();
+            quoteConnection.setRequestMethod("GET");
+            statusCode = quoteConnection.getResponseCode();
+            quoteConnection.disconnect();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return statusCode;
+    }
+
 }
